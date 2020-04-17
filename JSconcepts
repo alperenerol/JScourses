@@ -1,0 +1,53 @@
+SCOPE
+Scope: Scope determines the accessibility of variables, objects, and functions from different parts of the code.
+
+Two types of scope : Local/Function scope, global scope
+
+Local scope:
+JS has function/local scope that means each function creates a new scope, so variables defined inside a function are not accessible from outside the function. Local variables are created when a function starts, and deleted when the function is completed. Function arguments (parameters) work as local variables inside functions.
+ 
+Global scope : 
+A variable declared outside a function, becomes GLOBAL.
+A global variable has global scope: All scripts and functions on a web page can access it. With JavaScript, the global scope is the complete JavaScript environment. In HTML, the global scope is the window object. All global variables belong to the window object.
+Declared variable = var carName = "Volvo";
+Non-declared varaible = carName = "Volvo";
+Automatically Global:If you assign a value to a variable that has not been declared, it will automatically become a GLOBAL variable, even if the value is assigned inside a function.
+Do NOT create global variables unless you intend to.Strict Mode:In "Strict Mode", undeclared variables are not automatically global.
+
+HOISTINGHoisting is JavaScript's default behavior of moving all declarations to the top.
+JavaScript Declarations are Hoisted, not InitializationsIn JavaScript, a variable can be declared after it has been used.In other words; a variable can be used before it has been declared.
+Variables and constants declared with let or const are not hoisted!
+var x; // Declare xvar x = 5; // Initialize x 
+Initiliaze and declare are two Different concepts!! JavaScript Initializations are Not Hoisted: JavaScript only hoists declarations, not initializations.
+Declare all variables at the beginning of every scope.
+JavaScript in strict mode does not allow variables to be used if they are not declared.
+
+STRICT MODE"use strict"; Defines that JavaScript code should be executed in "strict mode".
+Strict mode is declared by adding "use strict"; to the beginning of a script or a function.
+Declared at the beginning of a script, it has global scope (all code in the script will execute in strict mode);Declared inside a function, it has local scope.
+Using a variable, without declaring it, is not allowed.Objects are variables too.Using an object, without declaring it, is not allowed. And many other things are not allowed in this mode.
+
+EVENT BUBBLING
+If there are two elements element 1 and element 2. Element 2 is inside element 1 and we attach an event handler with both the elements lets say onClick. Now when we click on element 2 then eventHandler for both the elements will be executed. Now here the question is in which order the event will execute. If the event attached with element 1 executes first it is called event capturing and if the event attached with element 2 executes first this is called event bubbling
+When you use event bubbling
+               / \
+---------------| |-----------------
+| element1     | |                |
+|   -----------| |-----------     |
+|   |element2  | |          |     |
+|   -------------------------     |
+|        Event BUBBLING           |
+-----------------------------------
+the event handler of element2 fires first, the event handler of element1 fires last.
+
+SHADOW DOMYou can think of the shadow DOM as a “DOM within a DOM”. It is its own isolated DOM tree with its own elements and styles, completely isolated from the original DOM. Shadow DOM serves for encapsulation. It allows a component to have its very own “shadow” DOM tree, that can’t be accidentally accessed from the main document, may have local style rules, and more.
+ Unlike the DOM, the shadow DOM is not based on a full, standalone document. A shadow DOM, as it's name suggests, is always attached to an element within a regular DOM. Without the DOM, a shadow DOM doesn't exist.
+
+Shadow DOM is strongly delimited from the main document:
+1. Shadow DOM elements are not visible to querySelector from the light DOM. In particular, Shadow DOM elements may have ids that conflict with those in the light DOM. They must be unique only within the shadow tree.
+2. Shadow DOM has own stylesheets. Style rules from the outer DOM don’t get applied.
+Shadow DOM elements:
+• Have their own ids space,
+• Invisible to JavaScript selectors from the main document, such as querySelector,
+• Use styles only from the shadow tree, not from the main document.
+Shadow DOM, if exists, is rendered by the browser instead of so-called “light DOM” (regular children)
